@@ -1,28 +1,19 @@
 import React, { Component, Fragment } from "react";
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
   Container,
   Button,
   Form,
   FormGroup,
   Label,
   Input,
-  NavLink,
   Alert,
   Row,
   Col,
-  Media,
 } from "reactstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { update } from "../actions/authActions";
 import { countries } from "country-flag-icons";
-import * as string from "country-flag-icons/string/3x2";
 
 class Profile extends Component {
   state = {
@@ -40,17 +31,15 @@ class Profile extends Component {
   };
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value }, () => {
-      this.state.countryFlag = (
-        <img
-          style={{ marginTop: "5%" }}
-          width="64"
-          height="32"
-          src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${this.state.country}.svg`}
-        />
-      );
+    this.setState({ [e.target.name]: e.target.value,
+    countryFlag: (<img
+      style={{ marginTop: "5%" }}
+      width="64"
+      height="32"
+      src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${this.state.country}.svg`}
+      alt='Country flag'
+    />) }, () => {
       this.forceUpdate();
-      console.log(this.state);
     });
   };
 
@@ -59,7 +48,9 @@ class Profile extends Component {
 
     const { name, city, country } = this.state;
 
-    city.replace(/\s+/g, "+");
+    if (city) {
+      city.replace(/\s+/g, "+")
+    };
 
     // Create user object
     const updatedUser = {
@@ -70,6 +61,7 @@ class Profile extends Component {
 
     // Attempt to register
     this.props.update(updatedUser);
+    window.location.reload();
   };
 
   render() {
@@ -77,8 +69,7 @@ class Profile extends Component {
 
     const alertLocation = (
       <Alert color="danger">
-        You haven't set a location yet - Please insert your city in the form
-        below. TODO - FIX RELAOD BUG
+        You haven't set a location yet - Please insert a valid City/Country combination in the form below.
       </Alert>
     );
 

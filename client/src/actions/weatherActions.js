@@ -1,10 +1,6 @@
 import axios from "axios";
 import { WEATHER_LOADING, GET_WEATHER, SET_WEATHER_LOCATION } from "./types";
-import store from "../store";
 import config from "../config/default";
-import { returnErrors } from "./errorActions";
-import { getSalt } from "bcryptjs";
-import { bindActionCreators } from "redux";
 
 export const getWeather = (city, country) => (dispatch) => {
   const KELVIN = 273.15;

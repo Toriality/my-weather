@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, DropdownItem } from "reactstrap";
+import { Container, ListGroup, ListGroupItem, Alert } from "reactstrap";
 import { connect } from "react-redux";
 import { getWeather } from "../actions/weatherActions";
 import PropTypes from "prop-types";
-import Profile from "./Profile";
 
-class Weather extends Component {
+class Home extends Component {
   static propTypes = {
     getWeather: PropTypes.func.isRequired,
     test: PropTypes.func.isRequired,
@@ -27,11 +26,12 @@ class Weather extends Component {
 
   render() {
     const { weather } = this.props.weather;
+    const { user }  = this.props.auth;
     return (
       <Container>
-        <Profile />
-        <DropdownItem divider />
-        <h6 style={{marginBottom: '2rem', marginTop: '2rem', marginLeft: '1rem'}}>Preview:</h6>
+          {user ? 
+            (<Alert color="success">Welcome back, {user.name}!</Alert>) : null  
+        }
         <ListGroup>
           <ListGroupItem>Current temperature: {weather.temp}</ListGroupItem>
           <ListGroupItem>Minimum temperature {weather.tempMin}</ListGroupItem>
@@ -59,4 +59,4 @@ const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { getWeather })(Weather);
+export default connect(mapStateToProps, { getWeather })(Home);

@@ -9,7 +9,6 @@ import {
   REGISTER_FAIL,
   UPDATE_SUCCESS,
 } from "../actions/types";
-import { setWeatherLocation } from "../actions/weatherActions";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -26,7 +25,6 @@ export default function authReducer(state = initialState, action) {
         isLoading: true,
       };
     case UPDATE_SUCCESS:
-
     case USER_LOADED:
       return {
         ...state,

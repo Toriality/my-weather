@@ -1,6 +1,5 @@
 import axios from "axios";
 import { returnErrors } from "./errorActions";
-import { getWeather } from "./weatherActions";
 import {
   USER_LOADED,
   USER_LOADING,
@@ -108,13 +107,6 @@ export const logout = () => {
 export const update =
   ({ name, city, country }) =>
   (dispatch, getState) => {
-    // Headers
-    const config = {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    };
-
     // Request body
     const body = JSON.stringify({ name, city, country });
 
