@@ -31,14 +31,18 @@ class Profile extends Component {
   };
 
   onChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value,
-    countryFlag: (<img
-      style={{ marginTop: "5%" }}
-      width="64"
-      height="32"
-      src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${this.state.country}.svg`}
-      alt='Country flag'
-    />) }, () => {
+    this.setState({ [e.target.name]: e.target.value }, () => {
+      this.setState({
+        countryFlag: (
+          <img
+            style={{ marginTop: "5%" }}
+            width="64"
+            height="32"
+            src={`http://purecatamphetamine.github.io/country-flag-icons/3x2/${this.state.country}.svg`}
+            alt="Country flag"
+          />
+        ),
+      });
       this.forceUpdate();
     });
   };
@@ -49,8 +53,8 @@ class Profile extends Component {
     const { name, city, country } = this.state;
 
     if (city) {
-      city.replace(/\s+/g, "+")
-    };
+      city.replace(/\s+/g, "+");
+    }
 
     // Create user object
     const updatedUser = {
@@ -69,7 +73,8 @@ class Profile extends Component {
 
     const alertLocation = (
       <Alert color="danger">
-        You haven't set a location yet - Please insert a valid City/Country combination in the form below.
+        You haven't set a location yet - Please insert a valid City/Country
+        combination in the form below.
       </Alert>
     );
 

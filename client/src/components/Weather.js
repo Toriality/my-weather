@@ -26,28 +26,33 @@ class Weather extends Component {
   }
 
   render() {
-    const { weather } = this.props.weather;
+    const { now } = this.props.weather;
     return (
       <Container>
         <Profile />
         <DropdownItem divider />
-        <h6 style={{marginBottom: '2rem', marginTop: '2rem', marginLeft: '1rem'}}>Preview:</h6>
+        <h6
+          style={{
+            marginBottom: "2rem",
+            marginTop: "2rem",
+            marginLeft: "1rem",
+          }}
+        >
+          Preview:
+        </h6>
         <ListGroup>
-          <ListGroupItem>Current temperature: {weather.temp}</ListGroupItem>
-          <ListGroupItem>Minimum temperature {weather.tempMin}</ListGroupItem>
-          <ListGroupItem>Maximum temperature {weather.tempMax}</ListGroupItem>
+          <ListGroupItem>Current temperature: {now.temp}</ListGroupItem>
+          <ListGroupItem>Minimum temperature {now.tempMin}</ListGroupItem>
+          <ListGroupItem>Maximum temperature {now.tempMax}</ListGroupItem>
           <ListGroupItem>
             Weather
             <img
-              src={`http://openweathermap.org/img/wn/${weather.weatherIcon}@4x.png`}
-              alt={weather.weather}
+              src={`http://openweathermap.org/img/wn/${now.weatherIcon}@4x.png`}
+              alt={now.weather}
             ></img>{" "}
-            {weather.weather} - {weather.weatherDesc}
+            {now.weather} - {now.weatherDesc}
           </ListGroupItem>
         </ListGroup>
-        <div>
-          <div></div>
-        </div>
       </Container>
     );
   }

@@ -1,4 +1,5 @@
 export const GET_WEATHER = "GET_WEATHER";
+export const GET_WEATHER_WEEK = "GET_WEATHER_WEEK";
 export const ADD_WEATHER = "ADD_WEATHER";
 export const DELETE_WEATHER = "DELETE_WEATHER";
 export const WEATHER_LOADING = "WEATHER_LOADING";
