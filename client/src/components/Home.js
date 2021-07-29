@@ -1,10 +1,17 @@
-import React, { Component } from "react";
-import { Container, ListGroup, ListGroupItem, Alert } from "reactstrap";
+import React, { Component, useState } from "react";
+import {
+     Container, ListGroup, ListGroupItem, Alert, TabContent, TabPane, Nav, NavItem, NavLink, Card, CardTitle, CardText, Row, Col 
+    }
+    from "reactstrap";
 import { connect } from "react-redux";
 import { getWeather } from "../actions/weatherActions";
 import PropTypes from "prop-types";
 
 class Home extends Component {
+    state = {
+        activeTab: '1',
+    }
+
   static propTypes = {
     getWeather: PropTypes.func.isRequired,
     test: PropTypes.func.isRequired,
@@ -27,11 +34,34 @@ class Home extends Component {
   render() {
     const { weather } = this.props.weather;
     const { user }  = this.props.auth;
+
+
     return (
       <Container>
           {user ? 
-            (<Alert color="success">Welcome back, {user.name}!</Alert>) : null  
+            (<Alert color="success">Welcome back, <a className="link" href="/edit_profile">{user.name}</a>!</Alert>) : null  
         }
+              <Nav tabs>
+        <NavItem>
+          <NavLink className={this.state.activeTab === '1' ? 'active' : ''} onClick={() => 
+            {
+                this.setState({activeTab: '1'})
+            }}>
+             Now
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink className={this.state.activeTab === '2' ? 'active' : ''} onClick={() => 
+            {
+                this.setState({activeTab: '2'})
+            }
+        }>
+            This week
+          </NavLink>
+        </NavItem>
+      </Nav>
+      <TabContent activeTab={this.state.activeTab}>
+        <TabPane tabId="1">
         <ListGroup>
           <ListGroupItem>Current temperature: {weather.temp}</ListGroupItem>
           <ListGroupItem>Minimum temperature {weather.tempMin}</ListGroupItem>
@@ -45,9 +75,10 @@ class Home extends Component {
             {weather.weather} - {weather.weatherDesc}
           </ListGroupItem>
         </ListGroup>
-        <div>
-          <div></div>
-        </div>
+        </TabPane>
+        <TabPane tabId="2">Tab 2 Content</TabPane>
+      </TabContent>
+    
       </Container>
     );
   }

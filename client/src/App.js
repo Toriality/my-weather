@@ -23,7 +23,7 @@ class App extends Component {
           <Container>
             <Router>
               <Route path="/" exact component={Home} />
-              <Route path="/dashboard" exact component={Weather} />
+              <Route path="/edit_profile" exact component={Weather} />
             </Router>
           </Container>
         </div>
