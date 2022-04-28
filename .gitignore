@@ -1,6 +1,3 @@
 /node_modules
-<<<<<<< HEAD
 /config
-=======
-/config
->>>>>>> d8d25882228b359163b5018a3794f5194ebf3476
+/.vscode

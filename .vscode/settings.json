@@ -1,7 +1,0 @@
-{
-  "[javascript]": {
-    "editor.autoClosingBrackets": "aways"
-  },
-  "editor.formatOnSaveMode": "file",
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-}
