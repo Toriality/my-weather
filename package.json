@@ -1,7 +1,7 @@
 {
-  "name": "mern_shopping_list",
+  "name": "my-weather",
   "version": "1.0.0",
-  "description": "Shopping list with the MERN stack",
+  "description": "Check weather app",
   "main": "server.js",
   "scripts": {
     "client-install": "npm install --prefix client",
@@ -19,10 +19,7 @@
     "config": "^3.3.6",
     "cors": "^2.8.5",
     "express": "^4.17.1",
-    "got": "^11.8.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.13.2",
-    "node-html-parser": "^4.1.0",
-    "request": "^2.88.2"
+    "mongoose": "^5.13.2"
   }
 }
